@@ -13,7 +13,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan({"com.example"})
 @EnableJpaRepositories({"com.example"})
 @EntityScan({"com.example"})
-@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class AuthorizationServerApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
