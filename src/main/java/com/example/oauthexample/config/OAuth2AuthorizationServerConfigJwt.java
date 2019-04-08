@@ -27,7 +27,7 @@ import java.util.Arrays;
 public class OAuth2AuthorizationServerConfigJwt extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
-//    @Qualifier("authenticationManagerBean")
+    @Qualifier("authenticationManagerBean")
     private AuthenticationManager authenticationManager;
 
     @Autowired
@@ -35,10 +35,7 @@ public class OAuth2AuthorizationServerConfigJwt extends AuthorizationServerConfi
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory().withClient("client_id").secret("$2a$12$uxeDgSCX8XV8ACQ.ac07WOFyy5DfI.54W35XzvLJkBxbCTWRu5Eou").scopes("read", "write")
-                .authorizedGrantTypes("password", "refresh_token").accessTokenValiditySeconds(20000)
-                .refreshTokenValiditySeconds(20000);
-
+        clients.jdbc(dataSource);
     }
 
     @Override
